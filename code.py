@@ -26,7 +26,10 @@ st.markdown("""
     color: #d8bd91;
 }
 
-/* Título */
+/* =========================
+   TÍTULO PRINCIPAL
+   ========================= */
+
 h1 {
     color: #c9a875 !important;
     font-family: Georgia, serif !important;
@@ -34,12 +37,14 @@ h1 {
     text-align: center;
     letter-spacing: 4px;
     text-transform: uppercase;
+
     text-shadow:
         3px 3px 0px #120b07,
         -1px -1px 0px #6b4b2d;
 }
 
 /* Subtítulo */
+
 .subtitulo {
     text-align: center;
     color: #8f704b;
@@ -49,49 +54,184 @@ h1 {
     margin-bottom: 25px;
 }
 
-/* Sidebar */
+/* =========================
+   SIDEBAR
+   ========================= */
+
 section[data-testid="stSidebar"] {
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            #513924 0%,
+            transparent 35%
+        ),
+        linear-gradient(
+            160deg,
+            #362419,
+            #21140d
+        );
+
+    border-right: 8px solid #4b301d;
+
+    box-shadow:
+        8px 0px 20px #0e0805,
+        inset -3px 0px 0px #6b4b2e;
+}
+
+/* =========================
+   PLACA "PROPIEDADES"
+   ========================= */
+
+.propiedades {
     background:
         linear-gradient(
             145deg,
-            #352318,
-            #24160e
+            #60452e,
+            #3b281b
         );
-    border-right: 6px solid #4f3522;
-    box-shadow: 5px 0px 15px #100a06;
+
+    padding: 18px 15px;
+
+    margin: 5px 0 20px 0;
+
+    border-radius: 6px;
+
+    border-top: 4px solid #806142;
+    border-left: 4px solid #765437;
+    border-right: 5px solid #24150d;
+    border-bottom: 7px solid #1c1009;
+
+    box-shadow:
+        inset 0 0 15px #24150d,
+        0 5px 10px #120a06;
+
+    transform: rotate(-0.5deg);
 }
 
-section[data-testid="stSidebar"] h2,
-section[data-testid="stSidebar"] h3 {
-    color: #c9a875 !important;
-    font-family: Georgia, serif !important;
+.propiedades-titulo {
+    color: #d5b47e;
+
+    font-family: Georgia, serif;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    text-align: center;
+
     text-transform: uppercase;
-    letter-spacing: 1px;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        2px 2px 0px #1b0f08;
 }
 
-/* Texto */
+/* =========================
+   SECCIONES
+   ========================= */
+
+.seccion {
+    background: #2b1c12;
+
+    padding: 10px;
+
+    margin: 12px 0;
+
+    border-left: 4px solid #765437;
+
+    border-bottom: 2px solid #513720;
+
+    box-shadow:
+        inset 0 0 8px #160c07;
+}
+
+.seccion-titulo {
+    color: #bd9664;
+
+    font-family: Georgia, serif;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 5px;
+}
+
+/* =========================
+   TEXTO
+   ========================= */
+
 label {
-    color: #c4a77d !important;
+    color: #c9ad7e !important;
     font-family: Georgia, serif !important;
 }
 
-/* Selectbox */
+/* =========================
+   SELECTBOX
+   ========================= */
+
 div[data-baseweb="select"] > div {
-    background-color: #2b1c12;
-    border: 2px solid #67472b;
+    background-color: #24170e;
+
+    border: 2px solid #68472b;
+
     color: #d8bd91;
+
+    border-radius: 3px;
+
+    box-shadow:
+        inset 0 0 6px #130a05;
 }
 
-/* Separadores */
+/* =========================
+   SLIDERS
+   ========================= */
+
+div[data-testid="stSlider"] {
+    color: #c9a875;
+}
+
+/* =========================
+   COLOR PICKERS
+   ========================= */
+
+div[data-testid="stColorPicker"] {
+    background: #2b1c12;
+
+    border: 2px solid #513720;
+
+    border-radius: 4px;
+
+    padding: 5px;
+
+    box-shadow:
+        inset 0 0 7px #160c07;
+}
+
+/* =========================
+   SEPARADORES
+   ========================= */
+
 hr {
     border: none;
-    border-top: 3px solid #533720;
-    margin: 20px 0;
+
+    border-top: 3px solid #513720;
+
+    margin: 18px 0;
 }
 
-/* Marco del tablero */
+/* =========================
+   MARCO DEL TABLERO
+   ========================= */
+
 .canvas-frame {
     padding: 22px;
+
     background:
         linear-gradient(
             135deg,
@@ -99,18 +239,26 @@ hr {
             #392619,
             #523a25
         );
+
     border: 10px solid #2a1a10;
+
     border-radius: 8px;
+
     box-shadow:
         inset 0 0 0 4px #806142,
         inset 0 0 25px #160d08,
         0 12px 25px #100905;
 }
 
-/* Rótulo TABLERO DE SUM */
+/* =========================
+   RÓTULO TABLERO DE SUM
+   ========================= */
+
 .stone-title {
     display: inline-block;
+
     padding: 12px 28px;
+
     margin-bottom: 18px;
 
     background: #4a3423;
@@ -123,8 +271,11 @@ hr {
     color: #c9ad7e;
 
     font-family: Georgia, serif;
+
     font-size: 22px;
+
     font-weight: bold;
+
     letter-spacing: 3px;
 
     text-shadow:
@@ -162,11 +313,28 @@ st.markdown(
 
 with st.sidebar:
 
-    st.subheader("🪨 Propiedades del tablero")
+    # Placa principal
+    st.markdown("""
+    <div class="propiedades">
+        <div class="propiedades-titulo">
+            🪨 Propiedades<br>
+            del Tablero
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.markdown("---")
 
-    st.subheader("Dimensiones")
+    # =========================
+    # DIMENSIONES
+    # =========================
+
+    st.markdown("""
+    <div class="seccion">
+        <div class="seccion-titulo">
+            📐 Tamaño de la piedra
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     canvas_width = st.slider(
         "Ancho del tablero",
@@ -184,9 +352,18 @@ with st.sidebar:
         50
     )
 
-    st.markdown("---")
 
-    st.subheader("Herramientas")
+    # =========================
+    # HERRAMIENTAS
+    # =========================
+
+    st.markdown("""
+    <div class="seccion">
+        <div class="seccion-titulo">
+            🪵 Herramientas de grabado
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     drawing_mode = st.selectbox(
         "Herramienta de dibujo:",
@@ -202,19 +379,32 @@ with st.sidebar:
     )
 
     stroke_width = st.slider(
-        "Ancho de línea",
+        "Grosor del grabado",
         1,
         30,
         15
     )
 
+
+    # =========================
+    # COLORES
+    # =========================
+
+    st.markdown("""
+    <div class="seccion">
+        <div class="seccion-titulo">
+            🎨 Pigmentos
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
     stroke_color = st.color_picker(
-        "Color de trazo",
+        "Color del trazo",
         "#D2B48C"
     )
 
     bg_color = st.color_picker(
-        "Color de fondo",
+        "Color de la piedra",
         "#3A291C"
     )
 
