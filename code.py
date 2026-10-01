@@ -2,114 +2,156 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 
 # =========================
-# CONFIGURACIÓN DE PÁGINA
+# CONFIGURACIÓN
 # =========================
+
 st.set_page_config(
-    page_title="Tablero Cavernícola",
+    page_title="Tablero de SUM",
     page_icon="🪨",
     layout="wide"
 )
 
 # =========================
-# ESTILO CAVERNÍCOLA
+# ESTILO RÚSTICO / CAVERNÍCOLA
 # =========================
+
 st.markdown("""
 <style>
 
-    /* Fondo general */
-    .stApp {
-        background-color: #241812;
-        color: #E6D2B5;
-    }
+.stApp {
+    background:
+        radial-gradient(circle at 20% 20%, #4a3423 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, #3b281b 0%, transparent 30%),
+        #21150e;
+    color: #d8bd91;
+}
 
-    /* Título */
-    h1 {
-        color: #D8B98A !important;
-        text-align: center;
-        font-family: Georgia, serif;
-        font-size: 42px !important;
-        text-shadow: 3px 3px 0px #120C08;
-        letter-spacing: 2px;
-    }
+/* Título */
+h1 {
+    color: #c9a875 !important;
+    font-family: Georgia, serif !important;
+    font-size: 46px !important;
+    text-align: center;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow:
+        3px 3px 0px #120b07,
+        -1px -1px 0px #6b4b2d;
+}
 
-    /* Subtítulos */
-    h2, h3 {
-        color: #C69C6D !important;
-        font-family: Georgia, serif;
-    }
+/* Subtítulo */
+.subtitulo {
+    text-align: center;
+    color: #8f704b;
+    font-family: Georgia, serif;
+    font-style: italic;
+    margin-top: -15px;
+    margin-bottom: 25px;
+}
 
-    /* Sidebar */
-    section[data-testid="stSidebar"] {
-        background-color: #302017;
-        border-right: 3px solid #5A3A25;
-    }
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background:
+        linear-gradient(
+            145deg,
+            #352318,
+            #24160e
+        );
+    border-right: 6px solid #4f3522;
+    box-shadow: 5px 0px 15px #100a06;
+}
 
-    section[data-testid="stSidebar"] h2,
-    section[data-testid="stSidebar"] h3 {
-        color: #D8B98A !important;
-        font-family: Georgia, serif;
-    }
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 {
+    color: #c9a875 !important;
+    font-family: Georgia, serif !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-    /* Texto */
-    label, .stMarkdown {
-        color: #D9C2A3 !important;
-    }
+/* Texto */
+label {
+    color: #c4a77d !important;
+    font-family: Georgia, serif !important;
+}
 
-    /* Sliders */
-    div[data-baseweb="slider"] {
-        margin-bottom: 10px;
-    }
+/* Selectbox */
+div[data-baseweb="select"] > div {
+    background-color: #2b1c12;
+    border: 2px solid #67472b;
+    color: #d8bd91;
+}
 
-    /* Selectbox */
-    div[data-baseweb="select"] > div {
-        background-color: #3A281C;
-        border: 2px solid #705039;
-        color: #E6D2B5;
-    }
+/* Separadores */
+hr {
+    border: none;
+    border-top: 3px solid #533720;
+    margin: 20px 0;
+}
 
-    /* Color pickers */
-    div[data-testid="stColorPicker"] {
-        background-color: #302017;
-        border-radius: 8px;
-    }
+/* Marco del tablero */
+.canvas-frame {
+    padding: 22px;
+    background:
+        linear-gradient(
+            135deg,
+            #60452e,
+            #392619,
+            #523a25
+        );
+    border: 10px solid #2a1a10;
+    border-radius: 8px;
+    box-shadow:
+        inset 0 0 0 4px #806142,
+        inset 0 0 25px #160d08,
+        0 12px 25px #100905;
+}
 
-    /* Efecto de marco alrededor del tablero */
-    .canvas-container {
-        background-color: #463022;
-        padding: 18px;
-        border: 8px solid #5A3A25;
-        border-radius: 18px;
-        box-shadow:
-            inset 0 0 20px #1A0F09,
-            0 8px 20px #120B07;
-    }
+/* Rótulo TABLERO DE SUM */
+.stone-title {
+    display: inline-block;
+    padding: 12px 28px;
+    margin-bottom: 18px;
 
-    /* Separadores */
-    hr {
-        border-color: #63452E;
-    }
+    background: #4a3423;
 
-    /* Botones */
-    button {
-        background-color: #5A3A25 !important;
-        color: #E6D2B5 !important;
-        border: 2px solid #8A6747 !important;
-    }
+    border-top: 4px solid #76583a;
+    border-left: 4px solid #694b30;
+    border-right: 4px solid #2a1a10;
+    border-bottom: 6px solid #21130b;
+
+    color: #c9ad7e;
+
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    text-shadow:
+        2px 2px 0px #1c1009;
+
+    transform: rotate(-1deg);
+}
 
 </style>
 """, unsafe_allow_html=True)
 
 
 # =========================
-# TÍTULO
+# ENCABEZADO
 # =========================
 
-st.title("🪨 Tablero de Pintura Cavernícola")
+st.markdown(
+    '<div class="stone-title">🪨 TABLERO DE SUM</div>',
+    unsafe_allow_html=True
+)
+
+st.title("Tablero para dibujo")
 
 st.markdown(
-    "<p style='text-align:center; color:#A98763; font-family:Georgia;'>"
-    "Dibuja como en las paredes de una antigua caverna"
-    "</p>",
+    '<div class="subtitulo">'
+    'Pinta, dibuja y deja tu marca en la piedra'
+    '</div>',
     unsafe_allow_html=True
 )
 
@@ -120,11 +162,11 @@ st.markdown(
 
 with st.sidebar:
 
-    st.subheader("🪨 Propiedades del Tablero")
+    st.subheader("🪨 Propiedades del tablero")
 
     st.markdown("---")
 
-    st.subheader("📐 Dimensiones del Tablero")
+    st.subheader("Dimensiones")
 
     canvas_width = st.slider(
         "Ancho del tablero",
@@ -144,10 +186,10 @@ with st.sidebar:
 
     st.markdown("---")
 
-    st.subheader("🖌️ Herramientas")
+    st.subheader("Herramientas")
 
     drawing_mode = st.selectbox(
-        "Herramienta de Dibujo:",
+        "Herramienta de dibujo:",
         (
             "freedraw",
             "line",
@@ -168,12 +210,12 @@ with st.sidebar:
 
     stroke_color = st.color_picker(
         "Color de trazo",
-        "#D8B98A"
+        "#D2B48C"
     )
 
     bg_color = st.color_picker(
         "Color de fondo",
-        "#3B2920"
+        "#3A291C"
     )
 
 
@@ -182,12 +224,12 @@ with st.sidebar:
 # =========================
 
 st.markdown(
-    '<div class="canvas-container">',
+    '<div class="canvas-frame">',
     unsafe_allow_html=True
 )
 
 canvas_result = st_canvas(
-    fill_color="rgba(170, 120, 70, 0.3)",
+    fill_color="rgba(139, 94, 52, 0.35)",
     stroke_width=stroke_width,
     stroke_color=stroke_color,
     background_color=bg_color,
